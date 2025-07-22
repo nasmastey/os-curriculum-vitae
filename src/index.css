@@ -2,63 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-/* OS Interface Design System - All colors MUST be HSL */
+/* CV Professional Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    /* Windows 11 Theme */
-    --win-background: 218 23% 23%;
-    --win-foreground: 0 0% 95%;
-    --win-accent: 213 100% 50%;
-    --win-accent-light: 213 100% 60%;
-    --win-surface: 220 22% 30%;
-    --win-surface-light: 220 22% 35%;
-    --win-border: 220 20% 40%;
-    --win-taskbar: 220 23% 18%;
-    --win-glass: 220 22% 30% / 0.8;
-    
-    /* macOS Theme */
-    --mac-background: 0 0% 97%;
-    --mac-foreground: 0 0% 15%;
-    --mac-accent: 207 100% 52%;
-    --mac-surface: 0 0% 100%;
-    --mac-surface-secondary: 0 0% 96%;
-    --mac-border: 0 0% 85%;
-    --mac-dock: 0 0% 100% / 0.8;
-    --mac-menu: 0 0% 98%;
-    --mac-shadow: 0 0% 0% / 0.1;
-    
-    /* Ubuntu Linux Theme */
-    --ubuntu-background: 26 43% 96%;
-    --ubuntu-foreground: 0 0% 20%;
-    --ubuntu-accent: 26 100% 55%;
-    --ubuntu-secondary: 270 100% 40%;
-    --ubuntu-surface: 0 0% 100%;
-    --ubuntu-border: 0 0% 80%;
-    --ubuntu-panel: 240 5% 15%;
-    --ubuntu-panel-foreground: 0 0% 90%;
+    /* Professional CV Theme */
+    --cv-primary: 220 100% 50%;
+    --cv-primary-dark: 220 100% 40%;
+    --cv-secondary: 45 100% 60%;
+    --cv-background: 0 0% 98%;
+    --cv-surface: 0 0% 100%;
+    --cv-text: 220 20% 20%;
+    --cv-text-muted: 220 15% 50%;
+    --cv-border: 220 20% 90%;
+    --cv-accent: 160 100% 45%;
+    --cv-success: 120 60% 50%;
+    --cv-gradient: linear-gradient(135deg, hsl(220 100% 50%), hsl(160 100% 45%));
     
     /* Default theme variables */
-    --background: var(--win-background);
-    --foreground: var(--win-foreground);
-    --card: var(--win-surface);
-    --card-foreground: var(--win-foreground);
-    --popover: var(--win-surface);
-    --popover-foreground: var(--win-foreground);
-    --primary: var(--win-accent);
+    --background: var(--cv-background);
+    --foreground: var(--cv-text);
+    --card: var(--cv-surface);
+    --card-foreground: var(--cv-text);
+    --popover: var(--cv-surface);
+    --popover-foreground: var(--cv-text);
+    --primary: var(--cv-primary);
     --primary-foreground: 0 0% 100%;
-    --secondary: var(--win-surface-light);
-    --secondary-foreground: var(--win-foreground);
-    --muted: var(--win-surface);
-    --muted-foreground: var(--win-foreground);
-    --accent: var(--win-accent-light);
+    --secondary: 220 20% 95%;
+    --secondary-foreground: var(--cv-text);
+    --muted: 220 20% 96%;
+    --muted-foreground: var(--cv-text-muted);
+    --accent: var(--cv-accent);
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: var(--win-border);
-    --input: var(--win-surface);
-    --ring: var(--win-accent);
-    --radius: 0.375rem;
+    --border: var(--cv-border);
+    --input: var(--cv-surface);
+    --ring: var(--cv-primary);
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -114,84 +95,39 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-
-  /* OS Theme Classes */
-  .theme-windows {
-    --background: var(--win-background);
-    --foreground: var(--win-foreground);
-    --card: var(--win-surface);
-    --card-foreground: var(--win-foreground);
-    --primary: var(--win-accent);
-    --secondary: var(--win-surface-light);
-    --border: var(--win-border);
-  }
-  
-  .theme-macos {
-    --background: var(--mac-background);
-    --foreground: var(--mac-foreground);
-    --card: var(--mac-surface);
-    --card-foreground: var(--mac-foreground);
-    --primary: var(--mac-accent);
-    --secondary: var(--mac-surface-secondary);
-    --border: var(--mac-border);
-  }
-  
-  .theme-ubuntu {
-    --background: var(--ubuntu-background);
-    --foreground: var(--ubuntu-foreground);
-    --card: var(--ubuntu-surface);
-    --card-foreground: var(--ubuntu-foreground);
-    --primary: var(--ubuntu-accent);
-    --secondary: var(--ubuntu-secondary);
-    --border: var(--ubuntu-border);
-  }
 }
 
 @layer components {
-  /* Windows Components */
-  .windows-window {
-    @apply bg-card border border-border rounded-lg shadow-2xl backdrop-blur-sm;
-    background: hsl(var(--win-glass));
+  /* CV Components */
+  .cv-section {
+    @apply py-12 px-4;
   }
   
-  .windows-taskbar {
-    @apply fixed bottom-0 left-0 right-0 h-12 flex items-center justify-center;
-    background: hsl(var(--win-taskbar));
-    backdrop-filter: blur(20px);
+  .cv-card {
+    @apply bg-card border border-border rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300;
   }
   
-  /* macOS Components */
-  .macos-window {
-    @apply bg-card border border-border rounded-xl shadow-xl;
-    background: hsl(var(--mac-surface));
-    box-shadow: 0 25px 50px -12px hsl(var(--mac-shadow));
+  .cv-gradient-text {
+    background: var(--cv-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
-  .macos-dock {
-    @apply fixed bottom-2 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded-2xl;
-    background: hsl(var(--mac-dock));
-    backdrop-filter: blur(20px);
+  .cv-skill-tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20;
   }
   
-  /* Ubuntu Components */
-  .ubuntu-window {
-    @apply bg-card border border-border rounded-lg shadow-lg;
-    background: hsl(var(--ubuntu-surface));
+  .cv-timeline-item {
+    @apply relative pl-8 pb-8 border-l-2 border-border last:border-l-0;
   }
   
-  .ubuntu-panel {
-    @apply fixed top-0 left-0 right-0 h-8 flex items-center px-2;
-    background: hsl(var(--ubuntu-panel));
-    color: hsl(var(--ubuntu-panel-foreground));
+  .cv-timeline-dot {
+    @apply absolute -left-2 top-2 w-4 h-4 bg-primary rounded-full border-2 border-background;
   }
   
-  /* Animations */
-  .os-transition {
-    @apply transition-all duration-700 ease-in-out;
-  }
-  
-  .window-hover {
-    @apply transition-transform duration-200 hover:scale-105;
+  .cv-hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
   }
 }
 
@@ -201,7 +137,7 @@
   }
 
   body {
-    @apply bg-background text-foreground overflow-hidden;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Ubuntu', sans-serif;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 }
